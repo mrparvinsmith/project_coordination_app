@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
+  get 'users/index'
+
+  get 'users/create'
+
+  get 'users/show'
+
+  get 'users/edit'
+
+  get 'projects/index'
+
+  get 'projects/show'
+
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
