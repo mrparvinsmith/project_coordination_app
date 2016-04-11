@@ -1,0 +1,31 @@
+<% if current_user %>
+  <h3>You're already in an account. If you would like to create a new one, you must first <%= link_to 'log out', '/logout', method: :delete %></h3>
+  <p>Click <%= link_to 'here', user_path(@current_user) %> to return to your home page.</p>
+<% else %>
+  <h1>Thank you for joining</h1>
+  <p>Please fill out the form below to sign up</p>
+  <% if @email_taken %>
+    <%= "An account already exists for that email." %>
+  <% end %>
+  <% if @password_mismatch %>
+    <%= "Your passwords don't match." %>
+  <% end %>
+  <form method="post" action="/signup">
+    <label>First Name</label>
+    <input type="text" name="first_name">
+
+    <label>Last Name</label>
+    <input type="text" name="last_name">
+
+    <label>Email</label>
+    <input type="email" name="email">
+
+    <label>Password</label>
+    <input type="password" name="password">
+
+    <label>Password Confirmation</label>
+    <input type="password" name="password_confirmation">
+
+    <button>Join</button>
+  </form>
+<% end %>

@@ -1,2 +1,16 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+<% if current_user %>
+  <%= @current_user.first_name %>
+<% else %>
+  <%= 'blank' %>
+<% end %>
+<% if session %>
+  <%= session[:user_id] %>
+<% else %>
+  <%= 'blank' %>
+<% end %>
+<form method="post" action="/logout">
+  <input type="hidden" name="_method" value="DELETE">
+  <button>Logout</button>
+</form>

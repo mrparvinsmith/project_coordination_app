@@ -1,2 +1,7 @@
-<h1>Users#index</h1>
+<% current_user %>
+<h1>Hi <%= @current_user.first_name %>!</h1>
 <p>Find me in app/views/users/index.html.erb</p>
+<form method="post" action="/logout">
+  <input type="hidden" name="_method" value="DELETE">
+  <button>Logout</button>
+</form>
