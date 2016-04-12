@@ -5,7 +5,8 @@
   <h1>Login</h1>
   <p>Welcome back!</p>
   <% if @bad_login %>
-    <%= 'Invalid login' %>
+    <%= 'Email-password pair not found.' %>
+    <br>
   <% end %>
   <form method="post" action="login">
     <label>Email</label>

@@ -1,5 +1,5 @@
 class AddCompletedToProject < ActiveRecord::Migration
   def change
-    add_column(:projects, :completed, :boolean, null: false)
+    add_column(:projects, :completed, :boolean, default: false)
   end
 end

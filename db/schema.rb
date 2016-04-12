@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412174523) do
+ActiveRecord::Schema.define(version: 20160412193111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,8 @@ ActiveRecord::Schema.define(version: 20160412174523) do
     t.string   "content"
     t.string   "user_id"
     t.string   "task_id"
-    t.datetime "time_posted"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "project_members", force: :cascade do |t|
@@ -35,18 +34,18 @@ ActiveRecord::Schema.define(version: 20160412174523) do
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.date     "deadline"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "completed",  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "completed",  default: false
   end
 
   create_table "tasks", force: :cascade do |t|
     t.string   "content"
     t.datetime "deadline"
     t.integer  "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "completed",  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "completed",  default: false
   end
 
   create_table "users", force: :cascade do |t|

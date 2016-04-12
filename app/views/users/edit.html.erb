@@ -1,7 +1,8 @@
 <% if current_user %>
   <h1>Update your profile</h1>
-  <% if @email_taken %>
+  <% if @user && @user.errors %>
     <%= "An account already exists for that email." %>
+    <br>
   <% end %>
   <form method="post" action="/profile_update">
     <label>First Name</label>
