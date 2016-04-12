@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   get 'projects/index'
 
-  get 'users/show'
+  get 'profile' => 'users#show'
+
+  delete 'delete_account' => 'users#destroy'
 
   get 'users/edit'
 

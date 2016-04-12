@@ -1,16 +1,17 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
 <% if current_user %>
-  <%= @current_user.first_name %>
+  <h2>Here's your profile information:</h2>
+  <p>Name: <%= @current_user.first_name + ' ' + @current_user.last_name %></p>
+  <p>Email: <%= @current_user.email %></p>
+
+  <form method="post" action="/logout">
+    <input type="hidden" name="_method" value="DELETE">
+    <button>Logout</button>
+  </form>
+
+  <form method="post" action="/delete_account">
+    <input type="hidden" name="_method" value="DELETE">
+    <button>Delete your account</button>
+  </form>
 <% else %>
-  <%= 'blank' %>
+  <h1>YOU MUST <a href="/login">LOGIN!</a></h1>
 <% end %>
-<% if session %>
-  <%= session[:user_id] %>
-<% else %>
-  <%= 'blank' %>
-<% end %>
-<form method="post" action="/logout">
-  <input type="hidden" name="_method" value="DELETE">
-  <button>Logout</button>
-</form>

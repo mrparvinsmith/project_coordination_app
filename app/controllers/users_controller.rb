@@ -34,4 +34,10 @@ class UsersController < ApplicationController
 
   def edit
   end
+
+  def destroy
+    User.find_by(id: session[:user_id]).destroy
+    session.delete(:user_id)
+    redirect_to '/'
+  end
 end

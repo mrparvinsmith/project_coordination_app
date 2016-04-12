@@ -1,6 +1,6 @@
 <% current_user %>
 <h1>Hi <%= @current_user.first_name %>!</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<p>See your profile info <a href="/profile">here</a>.</p>
 <form method="post" action="/logout">
   <input type="hidden" name="_method" value="DELETE">
   <button>Logout</button>
