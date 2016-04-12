@@ -7,11 +7,11 @@ Rails.application.routes.draw do
 
   delete 'logout' => 'sessions#destroy'
 
+  get 'projects' => 'projects#index'
+
   get 'signup' => 'users#new'
 
   post 'signup' => 'users#create'
-
-  get 'projects/index'
 
   get 'profile' => 'users#show'
 
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   patch 'profile_update' => 'users#update'
 
-  get 'projects/:id' => 'projects#show'
+  get 'projects/:id' => 'projects#show', as: :project
 
   get 'users/:id' => 'users#index', as: :user
 

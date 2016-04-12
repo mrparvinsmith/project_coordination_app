@@ -3,6 +3,8 @@
   <p>Name: <%= @current_user.first_name + ' ' + @current_user.last_name %></p>
   <p>Email: <%= @current_user.email %></p>
 
+  <p>See your projects <%= link_to "here", "/projects" %>.</p>
+
   <form method="get" action="/profile_edit">
     <button>Edit Profile</button>
   </form>

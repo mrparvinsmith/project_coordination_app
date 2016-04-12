@@ -1,2 +1,26 @@
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
+<% if current_user %>
+  <h1>Projects</h1>
+  <% if @current_user.projects %>
+    <% @current_user.projects.each do |job| %>
+      <% if !job.completed %>
+        <div class="active"><%= link_to job.name, project_path(job) %></div>
+      <% else %>
+        <div class="done"><%= link_to job.name, project_path(job) %></div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <h3>You have no projects yet.</h3>
+  <% end %>
+  <p>Return to your profile <%= link_to 'here', '/profile' %>.</p>
+<% else %>
+  <h1>You must <%= link_to 'login', '/login' %> to see this page.</h1>
+<% end %>
+
+<style>
+  .active {
+    background: red;
+  }
+  .done {
+    background: green;
+  }
+</style>

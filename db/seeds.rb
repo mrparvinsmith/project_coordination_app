@@ -5,12 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Post.destroy_all
+Task.destroy_all
+ProjectMember.destroy_all
+Project.destroy_all
+User.destroy_all
+
 user = User.create({
   first_name: 'a',
-  last_name: 'b',
-  email: 'c@c.c',
-  password: 'abc',
-  password_confirmation: 'abc'
+  last_name: 'a',
+  email: 'a@a.a',
+  password: 'a',
+  password_confirmation: 'a'
   })
 project = Project.create({
   name: 'road',
@@ -18,19 +24,19 @@ project = Project.create({
   })
 project.tasks.create({
   content: 'buy stuff',
-  deadline: 'April 20'
+  deadline: 'April 20, 2016'
   })
 task = project.tasks.first
 task.posts.create({
-  content: 'buy everyting',
+  content: "I'll buy that",
   user: user
   })
 user2 = User.create({
-  first_name: '1',
-  last_name: '1',
-  email: '1@1.1',
-  password: '1',
-  password_confirmation: '1'
+  first_name: 'b',
+  last_name: 'b',
+  email: 'b@b.b',
+  password: 'b',
+  password_confirmation: 'b'
   })
 ProjectMember.create({
   project_id: project.id,
@@ -38,5 +44,14 @@ ProjectMember.create({
   })
 ProjectMember.create({
   project_id: project.id,
-  user_id: user2.id,
+  user_id: user2.id
+  })
+project2 = Project.create({
+  name: 'Organize',
+  deadline: 'April 2, 2016',
+  completed: true
+  })
+ProjectMember.create({
+  project_id: project2.id,
+  user_id: user.id
   })
