@@ -1,2 +1,22 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<% if current_user %>
+  <h1>Update your profile</h1>
+  <% if @email_taken %>
+    <%= "An account already exists for that email." %>
+  <% end %>
+  <form method="post" action="/profile_update">
+    <label>First Name</label>
+    <input type="text" name="first_name" value=<%= @current_user.first_name %>>
+
+    <label>Last Name</label>
+    <input type="text" name="last_name" value=<%= @current_user.last_name %>>
+
+    <label>Email</label>
+    <input type="email" name="email" value=<%= @current_user.email %>>
+
+    <input type="hidden" name="_method" value="PATCH">
+    <button>Update</button>
+  </form>
+  <p>Don't want to update your info? <%= link_to 'Return to your profile!', '/profile' %></p>
+<% else %>
+  <h1>Sorry, but you have to <a href="/login">login</a> to see this page.</h1>
+<% end %>

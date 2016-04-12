@@ -3,6 +3,10 @@
   <p>Name: <%= @current_user.first_name + ' ' + @current_user.last_name %></p>
   <p>Email: <%= @current_user.email %></p>
 
+  <form method="get" action="/profile_edit">
+    <button>Edit Profile</button>
+  </form>
+
   <form method="post" action="/logout">
     <input type="hidden" name="_method" value="DELETE">
     <button>Logout</button>
@@ -13,5 +17,5 @@
     <button>Delete your account</button>
   </form>
 <% else %>
-  <h1>YOU MUST <a href="/login">LOGIN!</a></h1>
+  <h1>Sorry, but you have to <a href="/login">login</a> to see this page.</h1>
 <% end %>

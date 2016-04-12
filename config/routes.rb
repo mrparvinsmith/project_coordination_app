@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 
   delete 'delete_account' => 'users#destroy'
 
-  get 'users/edit'
+  get 'profile_edit' => 'users#edit'
+
+  patch 'profile_update' => 'users#update'
 
   get 'projects/:id' => 'projects#show'
 

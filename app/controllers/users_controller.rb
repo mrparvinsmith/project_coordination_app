@@ -35,6 +35,24 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def update
+    @email_taken = false
+    user = User.find_by(id: session[:user_id])
+    if (!User.find_by(email: params[:email])) || (user.email == params[:email])
+      user.first_name = params[:first_name],
+      user.last_name = params[:last_name],
+      user.email = params[:email]
+      if user.save
+        redirect_to '/profile'
+      else
+        render :edit
+      end
+    else
+      @email_taken = true
+      render :edit
+    end
+  end
+
   def destroy
     User.find_by(id: session[:user_id]).destroy
     session.delete(:user_id)
