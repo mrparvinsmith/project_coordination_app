@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'projects' => 'projects#index'
 
+  get 'new_project' => 'projects#create_project'
+
   get 'signup' => 'users#new'
 
   post 'signup' => 'users#create'
@@ -21,9 +23,11 @@ Rails.application.routes.draw do
 
   patch 'profile_update' => 'users#update'
 
-  get 'projects/:id' => 'projects#show', as: :project
-
   get 'users/:id' => 'users#index', as: :user
+
+  post 'projects/:id/invite' => 'projects#invite', as: :project_invite
+
+  get 'projects/:id' => 'projects#show', as: :project
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

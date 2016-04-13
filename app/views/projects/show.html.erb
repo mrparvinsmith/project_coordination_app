@@ -2,14 +2,50 @@
   <h1><%= @project.name %></h1>
   <% @project.tasks.each do |job| %>
     <div class="task"><%= job.content %>
-      <ul>
-        <% job.posts.each do |message| %>
+      <% job.posts.each do |message| %>
+        <div class="post"><p><%= message.user.name %> posted:</p>
+        <ul>
           <li><%= message.content %></li>
-        <% end %>
-      </ul>
+          <li><%= message.created_at %></li>
+        </ul></div>
+      <% end %>
+      <p class="new-post">New Post</p>
     </div>
   <% end %>
-  <p><%= link_to 'Project Index', '/projects' %></p>
+  <h3>New Task</h3>
+  <h3>Team</h3>
+  <ul>
+  <% @project.members.each do |member| %>
+      <li><%= member.name %></li>
+  <% end %>
+  </ul>
+  <h3>Invite others</h3>
+  <form method="post" action="/projects/<%= @project.id %>/invite">
+    <input type="email" name="email">
+    <button>Invite</button>
+  </form>
+  <%= link_to 'Project Index', '/projects' %>
 <% else %>
   <h1>You must <%= link_to 'login', '/login' %> to see this page.</h1>
 <% end %>
+
+<style>
+  p {
+    margin: 5px 10px;
+  }
+  .new-post {
+    font-size: 15px;
+    margin: 2px 10px;
+  }
+  .task {
+    font-size: 24px;
+    border: 2px solid black;
+    display: inline-block;
+  }
+  .post {
+    background: #44FFFF;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    font-size: 18px;
+  }
+</style>

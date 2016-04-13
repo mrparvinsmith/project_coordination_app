@@ -1,11 +1,21 @@
 <% if current_user %>
   <h1>Projects</h1>
+  <h3>Create a new project!</h3>
+  <div class="form hidden">
+    <form method="post" action="/new_project">
+      <input type="text" name="name">
+      <input type="date" name="deadline">
+      <button>Create Project</button>
+    </form>
+  </div>
   <% if @current_user.projects %>
     <% @current_user.projects.each do |job| %>
       <% if !job.completed %>
-        <div class="active"><%= link_to job.name, project_path(job) %></div>
+        <div class="active"><%= link_to job.name, project_path(job) %>
+        <br><%= job.deadline %></div>
       <% else %>
-        <div class="done"><%= link_to job.name, project_path(job) %></div>
+        <div class="done"><%= link_to job.name, project_path(job) %>
+        <br><%= job.deadline %></div>
       <% end %>
     <% end %>
   <% else %>
@@ -17,10 +27,21 @@
 <% end %>
 
 <style>
+  div {
+    font-size: 24px;
+  }
   .active {
-    background: red;
+    display: inline-block;
+    background: #FF4444;
   }
   .done {
-    background: green;
+    display: inline-block;
+    background: #44FF44;
+  }
+  .form {
+    transition: 1s;
+  }
+  .hidden {
+    display: none;
   }
 </style>
