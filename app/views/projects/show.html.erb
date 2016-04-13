@@ -20,6 +20,9 @@
   <% end %>
   </ul>
   <h3>Invite others</h3>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
   <form method="post" action="/projects/<%= @project.id %>/invite">
     <input type="email" name="email">
     <button>Invite</button>

@@ -37,11 +37,14 @@ class ProjectsController < ApplicationController
       if member.save
         redirect_to project_path(project)
       else
+        flash[:notice] = "An error occurred. Please try again later."
         redirect_to project_path(project)
       end
     elsif project.members.include?(new_member)
+      flash[:notice] = "That person is already a member."
       redirect_to project_path(project)
     else
+      flash[:notice] = params[:email] + " not found in user database."
       redirect_to project_path(project)
     end
   end
