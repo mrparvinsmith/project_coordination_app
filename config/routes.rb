@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   post 'projects/:id/new_task' => 'projects#create_task'
 
+  delete 'projects/:id/remove' => 'projects#remove_project', as: :project_remove
+
   post 'projects/:id/invite' => 'projects#invite', as: :project_invite
 
   get 'projects/:id' => 'projects#show', as: :project

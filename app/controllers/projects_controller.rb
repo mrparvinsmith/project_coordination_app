@@ -25,6 +25,20 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def complete_project
+  end
+
+  def remove_project
+    membership = ProjectMember.find_by(project_id: params[:id], user_id: session[:user_id])
+    project = Project.find_by(id: params[:id])
+    if membership.destroy
+      if project.members.length == 0
+        project.destroy
+      end
+      redirect_to '/projects'
+    end
+  end
+
   def create_task
     project = Project.find_by(id: params[:id])
     new_task = Task.new({
@@ -37,6 +51,9 @@ class ProjectsController < ApplicationController
     else
       render 'no task'
     end
+  end
+
+  def complete_task
   end
 
   def create_post

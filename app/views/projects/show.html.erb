@@ -17,7 +17,7 @@
     <% end %>
       <div class="task">
         <h4><%= job.content %></h4>
-        <p class="deadline"><%= job.deadline %></p>
+        <div class="deadline"><%= job.deadline %></div>
         <% job.posts.each do |message| %>
           <div class="post"><p><%= message.user.name %> posted:</p>
           <ul>
@@ -25,7 +25,7 @@
             <li><%= message.created_at %></li>
           </ul></div>
         <% end %>
-        <p class="new-post">New Post</p>
+        <div class="new-post">New Post</div>
       </div></div>
   <% end %>
   <h3>Team</h3>
@@ -43,6 +43,7 @@
     <button>Invite</button>
   </form>
   <%= link_to 'Project Index', '/projects' %>
+  <%= link_to 'Leave project', project_remove_path(@project), method: :delete, data: {confirm: "Are you sure you want to leave this project? You won't be able to rejoin without an invitation. If you are the last person to leave this project, it will be deleted from the database."} %>
 <% else %>
   <h1>You must <%= link_to 'login', '/login' %> to see this page.</h1>
 <% end %>
@@ -57,34 +58,5 @@
   h4 {
     margin: 0 5px;
     text-align: center;
-  }
-  .new-post {
-    font-size: 15px;
-    margin: 2px 10px;
-  }
-  .task {
-    font-size: 24px;
-    border: 2px solid black;
-    display: inline-block;
-  }
-  .post {
-    background: #44FFFF;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    font-size: 18px;
-  }
-  .new-task {
-    margin-bottom: 20px;
-  }
-  .active {
-    background: #FF4444;
-    display: inline-block;
-  }
-  .done {
-    background: #44FF44;
-    display: inline-block;
-  }
-  .deadline {
-    font-size: 15px;
   }
 </style>

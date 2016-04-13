@@ -4,9 +4,8 @@
 <% else %>
   <h1>Login</h1>
   <p>Welcome back!</p>
-  <% if @bad_login %>
-    <%= 'Email-password pair not found.' %>
-    <br>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
   <% end %>
   <form method="post" action="login">
     <label>Email</label>

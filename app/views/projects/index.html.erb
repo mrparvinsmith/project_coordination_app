@@ -12,7 +12,9 @@
     <% @current_user.projects.each do |job| %>
       <% if !job.completed %>
         <div class="active"><%= link_to job.name, project_path(job) %>
-        <br><%= job.deadline %></div>
+        <br>
+        <div class="deadline"><%= job.deadline %></div>
+        </div>
       <% else %>
         <div class="done"><%= link_to job.name, project_path(job) %>
         <br><%= job.deadline %></div>
@@ -32,16 +34,5 @@
   }
   h3 {
     margin-bottom: 0px;
-  }
-  .active {
-    display: inline-block;
-    background: #FF4444;
-  }
-  .done {
-    display: inline-block;
-    background: #44FF44;
-  }
-  .new-project {
-    margin-bottom: 20px;
   }
 </style>

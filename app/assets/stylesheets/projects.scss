@@ -1,3 +1,35 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.active {
+  display: inline-block;
+  background: #FF4444;
+}
+.done {
+  display: inline-block;
+  background: #44FF44;
+}
+.new-project {
+  margin-bottom: 20px;
+}
+.new-post {
+  font-size: 15px;
+  margin: 2px 10px;
+}
+.task {
+  font-size: 24px;
+  border: 2px solid black;
+  display: inline-block;
+}
+.post {
+  background: #44FFFF;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  font-size: 18px;
+}
+.new-task {
+  margin-bottom: 20px;
+}
+.deadline {
+  font-size: 15px;
+}
