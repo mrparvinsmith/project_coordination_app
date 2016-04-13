@@ -41,6 +41,13 @@ class ProjectsController < ApplicationController
     if membership.destroy
       # Deletes project if there are no members
       if project.members.length == 0
+        # recursively deletes every task and post within the project
+        project.tasks.each do |t|
+          t.posts.each do |p|
+            p.destroy
+          end
+          t.destroy
+        end
         project.destroy
       end
       redirect_to '/projects'
@@ -58,7 +65,8 @@ class ProjectsController < ApplicationController
     if new_task.save
       redirect_to project_path(project)
     else
-      render 'no task'
+      flash[:notice] = "Invalid deadline"
+      redirect_to project_path(project)
     end
   end
 
@@ -81,6 +89,17 @@ class ProjectsController < ApplicationController
 
   # creates a post
   def create_post
+    task = Task.find_by(id: params[:id])
+    post = Post.new({
+      content: params[:content],
+      user_id: session[:user_id],
+      task_id: task.id,
+      })
+    if post.save
+      redirect_to project_path(task.project)
+    else
+      render 'no post'
+    end
   end
 
   # lets project members add other members by email address

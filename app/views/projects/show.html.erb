@@ -22,10 +22,15 @@
           <div class="post"><p><%= message.user.name %> posted:</p>
           <ul>
             <li><%= message.content %></li>
-            <li><%= message.created_at %></li>
+            <li><%= message.created_at.localtime.to_formatted_s(:long) %></li>
           </ul></div>
         <% end %>
-        <div class="new-post">New Post</div>
+        <div class="new-post post">
+          <form method="post" action="/tasks/<%= job.id %>/new_post">
+          <textarea rows="4" name="content"></textarea>
+          <br>
+          <button>Post</button>
+        </div>
         <div class="remove-task"><%= link_to 'Delete task', task_remove_path(job), method: :delete, data: {confirm: "Are you sure?"} %></div>
       </div></div>
   <% end %>
@@ -36,9 +41,6 @@
   <% end %>
   </ul>
   <h3>Invite others</h3>
-  <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
   <form method="post" action="/projects/<%= @project.id %>/invite">
     <input type="email" name="email">
     <button>Invite</button>

@@ -4,15 +4,12 @@
 <% else %>
   <h1>Login</h1>
   <p>Welcome back!</p>
-  <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
   <form method="post" action="login">
     <label>Email</label>
-    <input type="email" name="email">
+    <input type="email" name="email"><br>
 
     <label>Password</label>
-    <input type="password" name="password">
+    <input type="password" name="password"><br>
 
     <button>Login</button>
   </form>
