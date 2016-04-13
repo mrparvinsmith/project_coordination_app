@@ -26,6 +26,7 @@
           </ul></div>
         <% end %>
         <div class="new-post">New Post</div>
+        <div class="remove-task"><%= link_to 'Delete task', task_remove_path(job), method: :delete, data: {confirm: "Are you sure?"} %></div>
       </div></div>
   <% end %>
   <h3>Team</h3>

@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   delete 'projects/:id/remove' => 'projects#remove_project', as: :project_remove
 
+  delete 'task/:id/remove' => 'projects#remove_task', as: :task_remove
+
   post 'projects/:id/invite' => 'projects#invite', as: :project_invite
 
   get 'projects/:id' => 'projects#show', as: :project
