@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'projects' => 'projects#index'
 
-  get 'new_project' => 'projects#create_project'
+  post 'new_project' => 'projects#create_project'
 
   get 'signup' => 'users#new'
 
@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   patch 'profile_update' => 'users#update'
 
   get 'users/:id' => 'users#index', as: :user
+
+  post 'projects/:id/new_task' => 'projects#create_task'
 
   post 'projects/:id/invite' => 'projects#invite', as: :project_invite
 

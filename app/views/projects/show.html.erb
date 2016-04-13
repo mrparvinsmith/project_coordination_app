@@ -1,18 +1,33 @@
+<% @project = Project.find_by(id: params[:id]) %>
 <% if current_user %>
   <h1><%= @project.name %></h1>
+  <h3>Create a new task!</h3>
+  <div class="new-task">
+    <form method="post" action="/projects/<%= @project.id %>/new_task">
+      <input type="text" name="content" placeholder="What needs to be done">
+      <input type="datetime" name="deadline" placeholder="ex: 3pm April 14, 2016">
+      <button>Create Task</button>
+    </form>
+  </div>
   <% @project.tasks.each do |job| %>
-    <div class="task"><%= job.content %>
-      <% job.posts.each do |message| %>
-        <div class="post"><p><%= message.user.name %> posted:</p>
-        <ul>
-          <li><%= message.content %></li>
-          <li><%= message.created_at %></li>
-        </ul></div>
-      <% end %>
-      <p class="new-post">New Post</p>
-    </div>
+    <% if job.completed %>
+      <div class="done">
+    <% else %>
+      <div class="active">
+    <% end %>
+      <div class="task">
+        <h4><%= job.content %></h4>
+        <p class="deadline"><%= job.deadline %></p>
+        <% job.posts.each do |message| %>
+          <div class="post"><p><%= message.user.name %> posted:</p>
+          <ul>
+            <li><%= message.content %></li>
+            <li><%= message.created_at %></li>
+          </ul></div>
+        <% end %>
+        <p class="new-post">New Post</p>
+      </div></div>
   <% end %>
-  <h3>New Task</h3>
   <h3>Team</h3>
   <ul>
   <% @project.members.each do |member| %>
@@ -36,6 +51,13 @@
   p {
     margin: 5px 10px;
   }
+  h3 {
+    margin-bottom: 0px;
+  }
+  h4 {
+    margin: 0 5px;
+    text-align: center;
+  }
   .new-post {
     font-size: 15px;
     margin: 2px 10px;
@@ -50,5 +72,19 @@
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     font-size: 18px;
+  }
+  .new-task {
+    margin-bottom: 20px;
+  }
+  .active {
+    background: #FF4444;
+    display: inline-block;
+  }
+  .done {
+    background: #44FF44;
+    display: inline-block;
+  }
+  .deadline {
+    font-size: 15px;
   }
 </style>

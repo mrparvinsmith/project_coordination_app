@@ -3,7 +3,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find_by(id: params[:id])
   end
 
   def create_project
@@ -16,11 +15,28 @@ class ProjectsController < ApplicationController
         user_id: session[:user_id],
         project_id: project.id
         })
-      render :index
+      if leader.save
+        redirect_to project_path(project)
+      else
+        render 'not a member'
+      end
+    else
+      render 'no project'
     end
   end
 
   def create_task
+    project = Project.find_by(id: params[:id])
+    new_task = Task.new({
+      content: params[:content],
+      deadline: params[:deadline],
+      project_id: project.id
+      })
+    if new_task.save
+      redirect_to project_path(project)
+    else
+      render 'no task'
+    end
   end
 
   def create_post
