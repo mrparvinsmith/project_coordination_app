@@ -1,23 +1,25 @@
-<h2>Profile information:</h2>
-<p>Name: <%= @user.first_name + ' ' + @user.last_name %></p>
-<p>Email: <%= @user.email %></p>
+  <div class="box">
+  <h2>Profile information:</h2>
+  <p>Name: <%= @user.first_name + ' ' + @user.last_name %></p>
+  <p>Email: <%= @user.email %></p>
 
 
-<% if session[:user_id] == @user.id %>
-  <%= link_to "Projects", "/projects" %>
+  <% if session[:user_id] == @user.id %>
+    <%= link_to "Projects", "/projects" %>
 
-  <form method="get" action="/users/<%= @user.id %>/edit">
-    <button>Edit Profile</button>
-  </form>
+    <form method="get" action="/users/<%= @user.id %>/edit">
+      <button>Edit Profile</button>
+    </form>
 
-  <form method="post" action="/logout">
-    <input type="hidden" name="_method" value="DELETE">
-    <button>Logout</button>
-  </form>
+    <form method="post" action="/logout">
+      <input type="hidden" name="_method" value="DELETE">
+      <button>Logout</button>
+    </form>
 
-  <%= link_to "Delete your account", user_path(@user), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger active' %>
-<% elsif current_user %>
-  <%= link_to "Return to your profile.", user_path(@current_user) %>
-<% else %>
-  <a href="/users/new">Sign in</a> to work with this person.
-<% end %>
+    <%= link_to "Delete your account", user_path(@user), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger active' %>
+  <% elsif current_user %>
+    <%= link_to "Return to your profile.", user_path(@current_user) %>
+  <% else %>
+    <a href="/users/new">Sign in</a> to work with this person.
+  <% end %>
+</div>

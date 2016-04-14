@@ -1,11 +1,13 @@
-<h1>Users</h1>
-<ul>
-<% User.all.each do |user| %>
-  <li>Name: <%= user.name %><br>
-  Email: <%= user.email %><br>
-  Id: <%= user.id %>
-  <% user.projects.each do |p| %>
-    Project <%= p.id %>: <%= p.name %><br>
-  <% end %></li>
-<% end %>
-</ul>
+<div class="box">
+  <h1>Users</h1>
+  <ul>
+  <% User.all.each do |user| %>
+    <li>Name: <%= user.name %><br>
+    Email: <%= user.email %><br>
+    Id: <%= user.id %>
+    <% user.projects.each do |p| %>
+      Project <%= p.id %>: <%= p.name %><br>
+    <% end %></li>
+  <% end %>
+  </ul>
+</div>

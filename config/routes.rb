@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get 'projects' => 'projects#index'
 
-  post 'new_project' => 'projects#create_project'
+  post 'project/new' => 'projects#create_project'
 
   get 'users/new'
 
@@ -25,9 +25,9 @@ Rails.application.routes.draw do
 
   delete 'users/:id' => 'users#destroy'
 
-  post 'projects/:id/new_task' => 'projects#create_task'
+  post 'projects/:id/task/new' => 'projects#create_task'
 
-  post 'tasks/:id/new_post' => 'projects#create_post'
+  post 'tasks/:id/post/new' => 'projects#create_post'
 
   post 'tasks/:id/complete' => 'projects#complete_task', as: :task_complete
 

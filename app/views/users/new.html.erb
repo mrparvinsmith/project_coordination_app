@@ -1,26 +1,28 @@
-<% if current_user %>
-  <h3>You're already logged in. If you would like to create a new account, you must first <%= link_to 'log out', '/logout', method: :delete %></h3>
-  <p>Click <%= link_to 'here', user_path(@current_user) %> to return to your home page.</p>
-<% else %>
-  <h1>Thank you for joining</h1>
-  <p>Please fill out the form below to sign up</p>
-  <form method="post" action="/users">
-    <label>First Name</label>
-    <input type="text" name="first_name"><br>
+<div class="box">
+  <% if current_user %>
+    <h3>You're already logged in. If you would like to create a new account, you must first <%= link_to 'log out', '/logout', method: :delete %></h3>
+    <p>Click <%= link_to 'here', user_path(@current_user) %> to return to your home page.</p>
+  <% else %>
+    <h1>Thank you for joining</h1>
+    <p>Please fill out the form below to sign up</p>
+    <form method="post" action="/users">
+      <label>First Name</label>
+      <input type="text" name="first_name"><br>
 
-    <label>Last Name</label>
-    <input type="text" name="last_name"><br>
+      <label>Last Name</label>
+      <input type="text" name="last_name"><br>
 
-    <label>Email</label>
-    <input type="email" name="email"><br>
+      <label>Email</label>
+      <input type="email" name="email"><br>
 
-    <label>Password</label>
-    <input type="password" name="password"><br>
+      <label>Password</label>
+      <input type="password" name="password"><br>
 
-    <label>Password Confirmation</label>
-    <input type="password" name="password_confirmation"><br>
+      <label>Password Confirmation</label>
+      <input type="password" name="password_confirmation"><br>
 
-    <button>Join</button>
-  </form>
-  <p>Already have an account? <%= link_to 'Login!', '/login' %></p>
-<% end %>
+      <button>Join</button>
+    </form>
+    <p>Already have an account? <%= link_to 'Login!', '/login' %></p>
+  <% end %>
+</div>

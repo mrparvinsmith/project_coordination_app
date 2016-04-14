@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .active {
-  background: #FF2222;
+  background: #FF8800;
 }
 .done {
   background: #22FF22;
@@ -12,9 +12,11 @@
   vertical-align: top;
   border: 2px solid black;
   margin: 5px;
+  text-align: center;
 }
 .new-project {
   margin-bottom: 20px;
+  text-align: left;
 }
 .new-post {
   font-size: 15px;
