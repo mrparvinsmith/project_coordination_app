@@ -4,6 +4,12 @@ Trello board: https://trello.com/b/3zhoicwA/project-2
 
 Heroku:
 
+To use:
+* fork & clone
+* bundle install
+* rake db:create
+* rake db:migrate
+
 Technologies used:
 * Ruby 2.2.3
 * Rails 4.2.6
@@ -11,8 +17,8 @@ Technologies used:
 * Bootstrap 3.3.6
 * Heroku
 
-This will be a group work manager where users will organize projects and meetings about said projects.
-The MVP will allow users to create projects, task-lists, post comments, and view deadlines.
+This is a group work manager where users can organize projects.
+It lets users create projects, task-lists, post comments, and view deadlines.
 
 Stretch goals:
 * optional privacy for projects
