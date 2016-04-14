@@ -7,4 +7,6 @@ class Project < ActiveRecord::Base
       member.user
     end
   end
+
+  validates :name, presence: true
 end

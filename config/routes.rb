@@ -29,6 +29,10 @@ Rails.application.routes.draw do
 
   post 'tasks/:id/new_post' => 'projects#create_post'
 
+  post 'tasks/:id/complete' => 'projects#complete_task', as: :task_complete
+
+  post 'projects/:id/complete' => 'projects#complete_project', as: :project_complete
+
   delete 'projects/:id/remove' => 'projects#remove_project', as: :project_remove
 
   delete 'task/:id/remove' => 'projects#remove_task', as: :task_remove

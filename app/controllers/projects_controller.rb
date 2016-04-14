@@ -23,15 +23,25 @@ class ProjectsController < ApplicationController
         # puts user in the project's show page
         redirect_to project_path(project)
       else
-        render 'not a member'
+        flash[:notice] = 'no member saved'
+        redirect_to '/projects'
       end
     else
-      render 'no project'
+      flash[:notice] = 'A project must have a name.'
+      redirect_to '/projects'
     end
   end
 
   # marks project as done
   def complete_project
+    project = Project.find_by(id: params[:id])
+    project.completed = true
+    if project.save
+      redirect_to '/projects'
+    else
+      flash[:notice] = "didn't save"
+      redirect_to '/projects'
+    end
   end
 
   # removes current user from a selected project
@@ -72,6 +82,15 @@ class ProjectsController < ApplicationController
 
   # marks a task as completed
   def complete_task
+    task = Task.find_by(id: params[:id])
+    project = Project.find_by(id: task.project_id)
+    task.completed = true
+    if task.save
+      redirect_to project_path(project)
+    else
+      flash[:notice] = "didn't save"
+      redirect_to project_path(project)
+    end
   end
 
   # deletes a task
@@ -98,7 +117,8 @@ class ProjectsController < ApplicationController
     if post.save
       redirect_to project_path(task.project)
     else
-      render 'no post'
+      flash[:notice] = 'A post must have content.'
+      redirect_to project_path(task.project)
     end
   end
 
