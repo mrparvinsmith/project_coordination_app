@@ -2,12 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .active {
-  display: inline-block;
   background: #FF4444;
 }
 .done {
-  display: inline-block;
   background: #44FF44;
+}
+.project {
+  display: inline-block;
+  vertical-align: top;
+  border: 2px solid black;
+  margin: 5px;
 }
 .new-project {
   margin-bottom: 20px;
@@ -23,6 +27,7 @@
   border: 2px solid black;
   display: inline-block;
   vertical-align: top;
+  margin: 5px;
 }
 .post {
   background: #44FFFF;
