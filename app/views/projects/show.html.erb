@@ -10,11 +10,11 @@
   </div>
   <% @project.tasks.each do |job| %>
     <% if job.completed %>
-      <div class="done">
+      <% status = "done" %>
     <% else %>
-      <div class="active">
+      <% status = "active" %>
     <% end %>
-      <div class="task">
+      <div class="task <%= status %>">
         <h4><%= job.content %></h4>
         <div class="deadline"><%= job.deadline.to_formatted_s(:long) %></div>
         <% job.posts.each do |message| %>
@@ -31,11 +31,11 @@
           <button>Post</button>
           </form>
         </div>
-        <div class="remove-task"><%= link_to 'Delete task', task_remove_path(job), method: :delete, data: {confirm: "Are you sure?"} %></div>
+        <div class="remove-task btn btn-default active"><%= link_to 'Delete task', task_remove_path(job), method: :delete, data: {confirm: "Are you sure?"} %></div>
         <% if !job.completed %>
-        <div class="complete-task"><%= link_to 'Mark as done', task_complete_path(job), method: :post %></div>
+        <div class="complete-task btn btn-default active"><%= link_to 'Mark as done', task_complete_path(job), method: :post %></div>
         <% end %>
-      </div></div>
+      </div>
   <% end %>
   <h3>Team</h3>
   <ul>
@@ -48,8 +48,8 @@
     <input type="email" name="email" placeholder="Email">
     <button>Invite</button>
   </form>
-  <%= link_to 'Project Index', '/projects' %>
-  <%= link_to 'Leave project', project_remove_path(@project), method: :delete, data: {confirm: "Are you sure you want to leave this project? You won't be able to rejoin without an invitation. If you are the last person to leave this project, it will be deleted from the database."} %>
+  <%= link_to 'Project Index', '/projects', :class => 'btn btn-default active' %>
+  <%= link_to 'Leave project', project_remove_path(@project), method: :delete, data: {confirm: "Are you sure you want to leave this project? You won't be able to rejoin without an invitation. If you are the last person to leave this project, it will be deleted from the database."}, :class => "btn btn-danger active" %>
 <% else %>
   <h1>You must <%= link_to 'login', '/login' %> to see this page.</h1>
 <% end %>
