@@ -70,7 +70,8 @@ class ProjectsController < ApplicationController
     new_task = Task.new({
       content: params[:content],
       deadline: params[:deadline],
-      project_id: project.id
+      project_id: project.id,
+      completed: false
       })
     if new_task.save
       redirect_to project_path(project)
