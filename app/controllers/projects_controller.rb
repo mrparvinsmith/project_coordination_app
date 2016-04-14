@@ -18,6 +18,17 @@ class ProjectsController < ApplicationController
   # show page for individual project
   def show
     @project = Project.find_by(id: params[:id])
+    @uncompleted = []
+    @completed= []
+    @project.tasks.each do |t|
+      if t.completed
+        @completed << t
+      else
+        @uncompleted << t
+      end
+    end
+    @completed.sort_by! {|t| t.deadline}
+    @uncompleted.sort_by! {|t| t.deadline}
   end
 
   # makes a new project
