@@ -15,10 +15,7 @@
     <button>Logout</button>
   </form>
 
-  <form method="post" action="/users/<%= @user.id %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <button>Delete your account</button>
-  </form>
+  <%= link_to "Delete your account", user_path(@user), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-danger active' %>
 <% elsif current_user %>
   <%= link_to "Return to your profile.", user_path(@current_user) %>
 <% else %>

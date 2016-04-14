@@ -1,7 +1,16 @@
 #Project 2
 
-[trello board](https://trello.com/b/3zhoicwA/project-2)
+Trello board: https://trello.com/b/3zhoicwA/project-2
 
+Heroku:
+
+Technologies used:
+
+Ruby 2.2.3
+Rails 4.2.6
+BCrypt 3.1.7
+Bootstrap 3.3.6
+Heroku
 
 This will be a group work manager where users will organize projects and meetings about said projects.
 The MVP will allow users to create project task-lists, post comments, and view a calendar containing info about deadlines and meetings.
