@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
 
   # show page for individual project
   def show
+    @project = Project.find_by(id: params[:id])
   end
 
   # makes a new project

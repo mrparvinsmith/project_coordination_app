@@ -18,7 +18,7 @@
         </div>
       <% end %>
     <% end %>
-<br>
+    <br>
     <% if @completed.length > 0 %>
       <% @completed.each do |job| %>
         <div class="done"><%= link_to job.name, project_path(job) %>
