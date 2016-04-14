@@ -11,6 +11,8 @@ class ProjectsController < ApplicationController
         @uncompleted << p
       end
     end
+    @completed.sort_by! {|p| p.deadline}
+    @uncompleted.sort_by! {|p| p.deadline}
   end
 
   # show page for individual project
