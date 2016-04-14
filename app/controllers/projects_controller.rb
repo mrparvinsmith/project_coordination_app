@@ -75,13 +75,6 @@ class ProjectsController < ApplicationController
     if membership.destroy
       # Deletes project if there are no members left
       if project.members.length == 0
-        # recursively deletes every task and post within the project
-        project.tasks.each do |t|
-          t.posts.each do |p|
-            p.destroy
-          end
-          t.destroy
-        end
         project.destroy
       end
       redirect_to '/projects'
@@ -121,10 +114,6 @@ class ProjectsController < ApplicationController
   def remove_task
     task = Task.find_by(id: params[:id])
     project = Project.find_by(id: task.project_id)
-    # deletes associated posts from database
-    task.posts.each do |message|
-      message.destroy
-    end
     if task.destroy
       redirect_to project_path(project)
     end

@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
-  has_many :project_members
-  has_many :tasks
+  has_many :project_members, dependent: :destroy
+  has_many :tasks, dependent: :destroy
 
   def members
     self.project_members.map do |member|
