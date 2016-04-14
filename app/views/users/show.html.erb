@@ -1,11 +1,12 @@
-<% if current_user %>
-  <h2>Here's your profile information:</h2>
-  <p>Name: <%= @current_user.first_name + ' ' + @current_user.last_name %></p>
-  <p>Email: <%= @current_user.email %></p>
+<h2>Profile information:</h2>
+<p>Name: <%= @user.first_name + ' ' + @user.last_name %></p>
+<p>Email: <%= @user.email %></p>
 
-  <p>See your projects <%= link_to "here", "/projects" %>.</p>
 
-  <form method="get" action="/profile_edit">
+<% if session[:user_id] == @user.id %>
+  <%= link_to "Projects", "/projects" %>
+
+  <form method="get" action="/users/<%= @user.id %>/edit">
     <button>Edit Profile</button>
   </form>
 
@@ -14,10 +15,12 @@
     <button>Logout</button>
   </form>
 
-  <form method="post" action="/delete_account">
+  <form method="post" action="/users/<%= @user.id %>">
     <input type="hidden" name="_method" value="DELETE">
     <button>Delete your account</button>
   </form>
+<% elsif current_user %>
+  <%= link_to "Return to your profile.", user_path(@current_user) %>
 <% else %>
-  <h1>Sorry, but you have to <a href="/login">login</a> to see this page.</h1>
+  <a href="/users/new">Sign in</a> to work with this person.
 <% end %>

@@ -1,7 +1,7 @@
-<% current_user %>
-<h1>Hi <%= @current_user.first_name %>!</h1>
-<p>See your profile info <a href="/profile">here</a>.</p>
-<form method="post" action="/logout">
-  <input type="hidden" name="_method" value="DELETE">
-  <button>Logout</button>
-</form>
+<h1>Users</h1>
+<ul>
+<% User.all.each do |user| %>
+  <li>Name: <%= user.name %><br>
+  Email: <%= user.email %></li>
+<% end %>
+</ul>

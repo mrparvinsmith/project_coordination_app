@@ -1,6 +1,6 @@
 <% if current_user %>
   <h3>You're already logged in. If you would like to login as someone else, you must first <%= link_to 'log out', '/logout', method: :delete %></h3>
-  <p>Click <%= link_to 'here', user_path(@current_user) %> to return to your home page.</p>
+  <p>Click <%= link_to 'here', user_path(@current_user) %> to return to your profile.</p>
 <% else %>
   <h1>Login</h1>
   <p>Welcome back!</p>
@@ -13,5 +13,5 @@
 
     <button>Login</button>
   </form>
-  <p>Don't have an account? <%= link_to 'Sign up!', '/signup' %></p>
+  <p>Don't have an account? <%= link_to 'Sign up!', '/users/new' %></p>
 <% end %>

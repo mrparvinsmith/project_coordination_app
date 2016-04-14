@@ -1,10 +1,6 @@
 <% if current_user %>
   <h1>Update your profile</h1>
-  <% if @user && @user.errors %>
-    <%= "An account already exists for that email." %>
-    <br>
-  <% end %>
-  <form method="post" action="/profile_update">
+  <form method="post" action="/users/<%= @current_user.id %>">
     <label>First Name</label>
     <input type="text" name="first_name" value=<%= @current_user.first_name %>>
 
@@ -17,7 +13,7 @@
     <input type="hidden" name="_method" value="PATCH">
     <button>Update</button>
   </form>
-  <p>Don't want to update your info? <%= link_to 'Return to your profile!', '/profile' %></p>
+  <p>Don't want to update your info? <%= link_to 'Return to your profile!', user_path(@current_user) %></p>
 <% else %>
   <h1>Sorry, but you have to <a href="/login">login</a> to see this page.</h1>
 <% end %>

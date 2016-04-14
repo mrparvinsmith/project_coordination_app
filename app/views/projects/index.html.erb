@@ -24,7 +24,7 @@
   <% else %>
     <h3>You have no projects yet.</h3>
   <% end %>
-  <p>Return to your profile <%= link_to 'here', '/profile' %>.</p>
+  <p>Return to your profile <%= link_to 'here', user_path(@current_user) %>.</p>
 <% else %>
   <h1>You must <%= link_to 'login', '/login' %> to see this page.</h1>
 <% end %>

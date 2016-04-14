@@ -17,11 +17,13 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      redirect_to '/signup'
+      flash[:notice] = "An error occurred. Please make sure the email does not already have an account associated with it and that the passwords match."
+      redirect_to '/users/new'
     end
   end
 
   def show
+    @user = User.find_by(id: params[:id])
   end
 
   def edit
@@ -33,15 +35,22 @@ class UsersController < ApplicationController
     @user.last_name = params[:last_name]
     @user.email = params[:email]
     if @user.save
-      redirect_to '/profile'
+      redirect_to user_path(@user)
     else
-      redirect_to '/profile_edit'
+      flash[:notice] = 'That email is already associated with a different account.'
+      redirect_to user_edit_path(@user)
     end
   end
 
   def destroy
-    User.find_by(id: session[:user_id]).destroy
-    session.delete(:user_id)
-    redirect_to '/'
+    user = User.find_by(id: session[:user_id])
+    # deletes membership for all projects
+    user.project_members.each do |membership|
+      membership.destroy
+    end
+    if user.destroy
+      session.delete(:user_id)
+      redirect_to '/'
+    end
   end
 end

@@ -11,19 +11,19 @@ Rails.application.routes.draw do
 
   post 'new_project' => 'projects#create_project'
 
-  get 'signup' => 'users#new'
+  get 'users/new'
 
-  post 'signup' => 'users#create'
+  get 'users' => 'users#index'
 
-  get 'profile' => 'users#show'
+  post 'users' => 'users#create'
 
-  delete 'delete_account' => 'users#destroy'
+  get 'users/:id/edit' => 'users#edit', as: :user_edit
 
-  get 'profile_edit' => 'users#edit'
+  get 'users/:id' => 'users#show', as: :user
 
-  patch 'profile_update' => 'users#update'
+  patch 'users/:id' => 'users#update'
 
-  get 'users/:id' => 'users#index', as: :user
+  delete 'users/:id' => 'users#destroy'
 
   post 'projects/:id/new_task' => 'projects#create_task'
 
@@ -31,11 +31,11 @@ Rails.application.routes.draw do
 
   post 'tasks/:id/complete' => 'projects#complete_task', as: :task_complete
 
+  delete 'task/:id/remove' => 'projects#remove_task', as: :task_remove
+
   post 'projects/:id/complete' => 'projects#complete_project', as: :project_complete
 
   delete 'projects/:id/remove' => 'projects#remove_project', as: :project_remove
-
-  delete 'task/:id/remove' => 'projects#remove_task', as: :task_remove
 
   post 'projects/:id/invite' => 'projects#invite', as: :project_invite
 

@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
     membership = ProjectMember.find_by(project_id: params[:id], user_id: session[:user_id])
     project = Project.find_by(id: params[:id])
     if membership.destroy
-      # Deletes project if there are no members
+      # Deletes project if there are no members left
       if project.members.length == 0
         # recursively deletes every task and post within the project
         project.tasks.each do |t|
