@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :posts
+  # has_many :projects, through: :project_members
   has_many :project_members
   has_secure_password
 

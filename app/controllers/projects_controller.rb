@@ -1,6 +1,16 @@
 class ProjectsController < ApplicationController
   # shows a list of current user's projects
   def index
+    @user = User.find(session[:user_id])
+    @uncompleted = []
+    @completed = []
+    @user.projects.each do |p|
+      if p.completed
+        @completed << p
+      else
+        @uncompleted << p
+      end
+    end
   end
 
   # show page for individual project
@@ -84,13 +94,12 @@ class ProjectsController < ApplicationController
   # marks a task as completed
   def complete_task
     task = Task.find_by(id: params[:id])
-    project = Project.find_by(id: task.project_id)
     task.completed = true
     if task.save
-      redirect_to project_path(project)
+      redirect_to project_path(task.project)
     else
       flash[:notice] = "didn't save"
-      redirect_to project_path(project)
+      redirect_to project_path(task.project)
     end
   end
 

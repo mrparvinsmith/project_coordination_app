@@ -9,14 +9,18 @@
     </form>
   </div>
   <% if @current_user.projects.length > 0 %>
-    <% @current_user.projects.each do |job| %>
-      <% if !job.completed %>
+    <% if @uncompleted.length > 0 %>
+      <% @uncompleted.each do |job| %>
         <div class="active"><%= link_to job.name, project_path(job) %>
         <br>
         <div class="deadline"><%= job.deadline.to_formatted_s(:long) %></div>
         <div class="complete-project"><%= link_to 'Mark as done', project_complete_path(job), method: :post %></div>
         </div>
-      <% else %>
+      <% end %>
+    <% end %>
+<br>
+    <% if @completed.length > 0 %>
+      <% @completed.each do |job| %>
         <div class="done"><%= link_to job.name, project_path(job) %>
         <br>Finished: <%= job.updated_at.to_date.to_formatted_s(:long) %></div>
       <% end %>

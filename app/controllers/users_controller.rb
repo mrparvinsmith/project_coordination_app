@@ -46,6 +46,18 @@ class UsersController < ApplicationController
     user = User.find_by(id: session[:user_id])
     # deletes membership for all projects
     user.project_members.each do |membership|
+      # if user is the only member on a project, deletes that project
+      if membership.project.members.length == 1
+        # deletes each task within the project
+        membership.project.tasks.each do |t|
+          # deletes each post for each task
+          t.posts.each do |p|
+            p.destroy
+          end
+          t.destroy
+        end
+        membership.project.destroy
+      end
       membership.destroy
     end
     if user.destroy

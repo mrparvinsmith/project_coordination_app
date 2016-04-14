@@ -2,6 +2,10 @@
 <ul>
 <% User.all.each do |user| %>
   <li>Name: <%= user.name %><br>
-  Email: <%= user.email %></li>
+  Email: <%= user.email %><br>
+  Id: <%= user.id %>
+  <% user.projects.each do |p| %>
+    Project <%= p.id %>: <%= p.name %><br>
+  <% end %></li>
 <% end %>
 </ul>
