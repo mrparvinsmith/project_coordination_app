@@ -8,6 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+
+<% if current_user %>
+  <ul class="nav nav-pills">
+    <li><%= link_to @current_user.name, user_path(@current_user) %></li>
+    <li role="presentation"><%= link_to 'Projects', '/projects' %></li>
+    <li><%= link_to 'Log Out', 'logout', method: :delete %></li>
+  </ul>
+<% end %>
+
 <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
 <% end %>
