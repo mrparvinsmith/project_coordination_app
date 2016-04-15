@@ -2,7 +2,7 @@ Project 2
 
 Trello board: https://trello.com/b/3zhoicwA/project-2
 
-Heroku:
+Heroku: https://project-coordination-app.herokuapp.com/
 
 To use:
 * fork & clone
@@ -19,6 +19,9 @@ Technologies used:
 
 This is a group work manager where users can organize projects.
 It lets users create projects, task-lists, post comments, and view deadlines.
+
+Known bugs:
+* logging out using nav pills deletes the user
 
 Stretch goals:
 * optional privacy for projects

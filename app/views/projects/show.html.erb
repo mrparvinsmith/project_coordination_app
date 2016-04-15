@@ -1,7 +1,7 @@
 <div class="box">
 <% if current_user %>
   <h1><%= @project.name %></h1>
-  <h3>Create a new task!</h3>
+  <h4>Create a new task!</h4>
   <div class="new-task">
     <form method="post" action="/projects/<%= @project.id %>/task/new">
       <input type="text" name="content" placeholder="What needs to be done">
@@ -10,7 +10,7 @@
     </form>
   </div>
   <% @uncompleted.each do |job| %>
-    <div class="task active">
+    <div class="task active col-md-3 col-sm-4 col-xs-6">
       <h2><%= job.content %></h2>
       <div class="deadline"><%= job.deadline.to_formatted_s(:long) %></div>
       <% job.posts.each do |message| %>
@@ -27,12 +27,12 @@
         <button class="btn btn-default active">Post</button>
         </form>
       </div>
-      <div class="remove-task btn btn-default active col-md-6 col-sm-6 col-xs-6"><%= link_to 'Delete task', task_remove_path(job), method: :delete, data: {confirm: "Are you sure?"} %></div>
-      <div class="complete-task btn btn-default active col-md-6 col-sm-6 col-xs-6"><%= link_to 'Mark as done', task_complete_path(job), method: :post %></div>
+      <div class="remove-task btn btn-default active col-md-6 col-sm-6 col-xs-12"><%= link_to 'Delete task', task_remove_path(job), method: :delete, data: {confirm: "Are you sure?"} %></div>
+      <div class="complete-task btn btn-default active col-md-6 col-sm-6 col-xs-12"><%= link_to 'Mark as done', task_complete_path(job), method: :post %></div>
     </div>
   <% end %>
   <% @completed.each do |job| %>
-    <div class="task done">
+    <div class="task done col-md-3 col-sm-4 col-xs-6">
       <h2><%= job.content %></h2>
       <div class="deadline"><%= job.deadline.to_formatted_s(:long) %></div>
       <% job.posts.each do |message| %>
@@ -42,22 +42,24 @@
           <li><%= message.created_at.localtime.to_formatted_s(:long) %></li>
         </ul></div>
       <% end %>
-      <div class="remove-task btn btn-default active col-md-6 col-sm-6 col-xs-6"><%= link_to 'Delete task', task_remove_path(job), method: :delete, data: {confirm: "Are you sure?"} %></div>
+      <div class="remove-task btn btn-default active col-md-6 col-sm-6 col-xs-12"><%= link_to 'Delete task', task_remove_path(job), method: :delete, data: {confirm: "Are you sure?"} %></div>
     </div>
   <% end %>
-  <h3>Team</h3>
-  <ul>
-  <% @project.members.each do |member| %>
-      <li><%= member.name %></li>
-  <% end %>
-  </ul>
-  <h3>Invite others</h3>
-  <form method="post" action="/projects/<%= @project.id %>/invite">
-    <input type="email" name="email" placeholder="Email">
-    <button class="btn btn-default active">Invite</button>
-  </form>
-  <%= link_to 'Project Index', '/projects', :class => 'btn btn-default active' %>
-  <%= link_to 'Leave project', project_remove_path(@project), method: :delete, data: {confirm: "Are you sure you want to leave this project? You won't be able to rejoin without an invitation. If you are the last person to leave this project, it will be deleted from the database."}, :class => "btn btn-danger active" %>
+  <div class="col-md-12 col-sm-12 col-xs-12"><div class="team">
+    <h3>Team</h3>
+    <ul>
+    <% @project.members.each do |member| %>
+        <li><%= member.name %></li>
+    <% end %>
+    </ul>
+    <h3>Invite others</h3>
+    <form method="post" action="/projects/<%= @project.id %>/invite">
+      <input type="email" name="email" placeholder="Email">
+      <button class="btn btn-default active">Invite</button>
+    </form>
+    <%= link_to 'Project Index', '/projects', :class => 'btn btn-default active' %>
+    <%= link_to 'Leave project', project_remove_path(@project), method: :delete, data: {confirm: "Are you sure you want to leave this project? You won't be able to rejoin without an invitation. If you are the last person to leave this project, it will be deleted from the database."}, :class => "btn btn-danger active" %>
+  </div></div>
 <% else %>
   <h1>You must <%= link_to 'login', '/login' %> to see this page.</h1>
 <% end %>
@@ -67,11 +69,17 @@
   p {
     margin: 5px 10px;
   }
-  h3 {
+  h4 {
     margin-bottom: 0px;
+  }
+  h3 {
+    margin: 0px;
   }
   h2 {
     margin: 0 5px;
     text-align: center;
+  }
+  textarea {
+    width: 100%;
   }
 </style>

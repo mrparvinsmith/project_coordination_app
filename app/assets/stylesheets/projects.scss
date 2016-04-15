@@ -33,8 +33,7 @@
 }
 .post {
   background: #44FFFF;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border: 1px solid black;
   font-size: 18px;
   width: 100%;
   margin-left: 0;
@@ -45,4 +44,10 @@
 }
 .deadline {
   font-size: 15px;
+}
+.team {
+  border: 1px solid black;
+  background: white;
+  display: inline-block;
+  padding: 5px;
 }

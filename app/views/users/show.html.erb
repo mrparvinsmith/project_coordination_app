@@ -5,8 +5,6 @@
 
 
   <% if session[:user_id] == @user.id %>
-    <%= link_to "Projects", "/projects" %>
-
     <form method="get" action="/users/<%= @user.id %>/edit">
       <button class="btn btn-default active">Edit Profile</button>
     </form>

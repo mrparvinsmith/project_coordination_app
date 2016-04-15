@@ -12,8 +12,8 @@ Project.destroy_all
 User.destroy_all
 
 user = User.create({
-  first_name: 'a',
-  last_name: 'a',
+  first_name: 'Aaron',
+  last_name: 'Anderson',
   email: 'a@a.a',
   password: 'a',
   password_confirmation: 'a'
@@ -32,8 +32,8 @@ task.posts.create({
   user: user
   })
 user2 = User.create({
-  first_name: 'b',
-  last_name: 'b',
+  first_name: 'Bob',
+  last_name: 'Bobson',
   email: 'b@b.b',
   password: 'b',
   password_confirmation: 'b'
