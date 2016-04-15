@@ -24,7 +24,8 @@ project = Project.create({
   })
 project.tasks.create({
   content: 'buy stuff',
-  deadline: 'April 20, 2016'
+  deadline: 'April 20, 2016',
+  completed: false
   })
 task = project.tasks.first
 task.posts.create({
